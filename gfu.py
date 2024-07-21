@@ -3,6 +3,10 @@ def get_first_url(url):
     import requests
     from bs4 import BeautifulSoup
 
+    # Check if the URL has a valid schema (http or https)
+    if not url.startswith("http://") and not url.startswith("https://"):
+        url = "http://" + url  # Add http:// as the default schema
+
     # Get the filtered links
     urls = efl.extract_filtered_links(url)
 
@@ -16,7 +20,7 @@ def get_first_url(url):
         text_content2 = soup2.get_text()
 
         # Print the actual text content
-        return(text_content + text_content2)
+        return text_content + text_content2
     else:
         print("No filtered links found.")
 
