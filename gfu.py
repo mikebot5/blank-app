@@ -13,9 +13,10 @@ def get_first_url(url):
     if urls:
         # Retrieve content from the first link (if available)
         print(urls[0])
-        print(urls[1])
+        if urls[1]:
+            print(urls[1])
+            response2 = requests.get(urls[1])
         response = requests.get(urls[0])
-        response2 = requests.get(urls[1])
         soup = BeautifulSoup(response.content, 'html.parser')
         soup2 = BeautifulSoup(response2.content, 'html.parser')
         text_content = soup.get_text()
