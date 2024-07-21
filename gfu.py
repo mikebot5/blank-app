@@ -11,19 +11,19 @@ def get_first_url(url):
     urls = efl.extract_filtered_links(url)
 
     if urls:
-        # Retrieve content from the first link (if available)
-        print(urls[0])
-        if urls[1]:
-            print(urls[1])
+        # Ensure there are at least two URLs
+        if len(urls) >= 2:
+            response = requests.get(urls[0])
             response2 = requests.get(urls[1])
-        response = requests.get(urls[0])
-        soup = BeautifulSoup(response.content, 'html.parser')
-        soup2 = BeautifulSoup(response2.content, 'html.parser')
-        text_content = soup.get_text()
-        text_content2 = soup2.get_text()
+            soup = BeautifulSoup(response.content, 'html.parser')
+            soup2 = BeautifulSoup(response2.content, 'html.parser')
+            text_content = soup.get_text()
+            text_content2 = soup2.get_text()
 
-        # Print the actual text content
-        return text_content + text_content2
+            # Print the actual text content
+            return text_content + text_content2
+        else:
+            print("Not enough filtered links found.")
     else:
         print("No filtered links found.")
 
