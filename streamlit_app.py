@@ -16,7 +16,10 @@ def generate_and_summarize():
         url = response1.text  # Extract the first URL
     else:
         url = question
-    response2 = model.generate_content("Can you summarize " + gfu.get_first_url(url) + "And answer the question" + question)
+
+    # Concatenate the strings correctly
+    summary_query = "Can you summarize " + gfu.get_first_url(url) + " and answer the question: " + question
+    response2 = model.generate_content(summary_query)
     summary_text = response2.text + url
 
     # Display the summary
