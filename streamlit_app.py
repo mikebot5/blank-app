@@ -7,7 +7,7 @@ GOOGLE_API_KEY = 'AIzaSyDk71ZfWHqL6A2MoyqQVsVTz3s9L4Dtk_I'
 genai.configure(api_key=GOOGLE_API_KEY)
 
 # Create the GenerativeModel
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-pro')
 
 def generate_and_summarize():
     question = st.text_input("Enter your question:")
